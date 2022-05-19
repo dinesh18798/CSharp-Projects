@@ -1,0 +1,5 @@
+Windows Task Manager
+
+- To debug/run the project it requires the permission (as administrator) to access the process running in windows.
+- Please run the visual studio as administrator or when it prompts requiring to have elevated permission,
+  continue to restart under different credentials.

@@ -1,0 +1,70 @@
+﻿<Window x:Class="WindowsTaskManagerUI.Views.CreateNewTaskWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowsTaskManagerUI.Views"
+        mc:Ignorable="d"
+        Title="Create New Task"
+        Height="225"
+        Width="425"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ViewResources/CustomResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              VerticalAlignment="Center"
+              Margin="20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center"
+                       Grid.Column="0"
+                       Text="Open: " />
+
+            <TextBox x:Name="fileNameTextBox"
+                     Grid.Column="1"
+                     Height="25"
+                     VerticalContentAlignment="Center"
+                     Text="{Binding FileName, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter"
+                                Command="{Binding OKCommand}" />
+                </TextBox.InputBindings>
+            </TextBox>
+        </Grid>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    Margin="10,0"
+                    HorizontalAlignment="Right">
+
+            <Button Style="{StaticResource customButton}"
+                    Content="OK"
+                    Command="{Binding OKCommand}" />
+
+            <Button Style="{StaticResource customButton}"
+                    Content="Cancel"
+                    Command="{Binding CancelCommand}" />
+
+            <Button x:Name="browseButton"
+                    Style="{StaticResource customButton}"
+                    Content="Browse..."
+                    Command="{Binding BrowseCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>
